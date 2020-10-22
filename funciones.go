@@ -32,13 +32,23 @@ func generadorImpares() func() int {
 	}
 }
 
+func intercambia(a, b *int) {
+  temp := *a
+  *a = *b
+  *b = temp
+}
+
 func main(){
   var temp, p int
   var slice []int
   nextImpar := generadorImpares()
+  
+  fmt.Println("--Secuencia Fibonacci--")
   fmt.Print("Ingrese posición para fiboniacci: ")
   fmt.Scan(&temp)
   fmt.Println("Numero Fibonacci", Fibonacci(temp))
+
+  fmt.Println("--Implementacion Variadic--")
   fmt.Print("Ingrese longitud del arreglo: ")
   fmt.Scan(&p)
   for i:=0; i < p; i++{
@@ -48,10 +58,21 @@ func main(){
   }
   
   fmt.Println("El número más grande fue", MasGrande(slice...))
+
+  fmt.Println("--Generador Impares--")
   fmt.Print("Ingrese cantidad de numeros impares: ")
   fmt.Scan(&temp)
   
   for i:=1; i <= temp; i++{
     fmt.Println(nextImpar())
   }
+
+  fmt.Println("--Intercambio de numeros--")
+  fmt.Print("Ingresa numero a: ")
+  fmt.Scan(&temp)
+  fmt.Print("Ingresa numero b: ")
+  fmt.Scan(&p)
+  intercambia(&temp, &p)
+  fmt.Println("Valor a:", temp)
+  fmt.Print("Valor b:", p)
 }
